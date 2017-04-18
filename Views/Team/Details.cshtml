@@ -9,4 +9,17 @@
 @foreach (var player in Model.Players)
 {
     <p>@Html.DisplayFor(modelPlayer => player.Name)</p>
+
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(modelPlayer => player.PlayerId)
+        @Html.HiddenFor(modelPlayer => player.Name)
+
+
+        @Html.DisplayFor(modelPlayer => player.TeamId)
+        @Html.DropDownList("TeamId");
+
+        <input type="submit" value="Reassign Player" />
+    }
+
 }

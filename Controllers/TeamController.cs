@@ -28,6 +28,16 @@ namespace SportsOrganizer.Controllers
             return View(thisTeam);
         }
 
+        [HttpPost] 
+        public IActionResult Details(Player player)
+        {
+            var newTeamId = this.Request.Form["TeamId"];
+            player.TeamId = Int32.Parse(newTeamId);
+            db.Entry(player).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
         public IActionResult Create()
         {
             ViewBag.DivisionId = new SelectList(db.Divisions, "DivisionId", "Name");
