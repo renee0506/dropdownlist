@@ -4,3 +4,9 @@
     ViewData["Title"] = "Sports Organizer - Divisions Detail";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<h1>@Html.DisplayFor(model => model.Name)</h1>
+@foreach (var team in Model.Teams)
+{
+    <p>@Html.DisplayFor(modelTeam => team.Name)</p>
+}

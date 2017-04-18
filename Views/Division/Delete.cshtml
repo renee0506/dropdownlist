@@ -1,0 +1,15 @@
+﻿@model SportsOrganizer.Models.Division
+
+@{ 
+    ViewData["Title"] = "Division -- Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Are you sure you want to DELETE this?</h2>
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.DivisionId)
+    <input type="submit" value="Delete" />
+}
+
+@Html.ActionLink("Back to List", "Index")

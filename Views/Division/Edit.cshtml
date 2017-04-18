@@ -1,0 +1,26 @@
+﻿@model SportsOrganizer.Models.Division
+
+@{
+    ViewData["Title"] = "Sports Organizer - Divisions Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit A Division: @Html.DisplayFor(model => model.Name)</h2>
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.DivisionId)
+
+    @Html.LabelFor(model => model.Name)
+    @Html.EditorFor(model => model.Name)
+
+    @Html.LabelFor(model => model.MaxTeams)
+    @Html.EditorFor(model => model.MaxTeams)
+
+    @Html.LabelFor(model => model.Skill)
+    @Html.EditorFor(model => model.Skill)
+
+    <input type="submit" value="Save Changes" class="btn btn-primary" />
+
+}
+
+@Html.ActionLink("Back to List", "Index")

@@ -10,6 +10,8 @@
     <div>
         <h4>@Html.DisplayFor(modelDivision => division.Name)</h4>
         @Html.ActionLink("Details", "Details", new { id = division.DivisionId })
+        @Html.ActionLink("Delete", "Delete", new { id = division.DivisionId })
+        @Html.ActionLink("Edit","Edit", new { id = division.DivisionId })
     </div>
 
 }
