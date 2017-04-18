@@ -28,6 +28,7 @@ namespace SportsOrganizer
         }
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
             services.AddEntityFramework()
                 .AddDbContext<SportsOrganizerDbContext>(options =>
                     options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
@@ -42,6 +43,13 @@ namespace SportsOrganizer
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
 
             app.Run(async (context) =>
             {
