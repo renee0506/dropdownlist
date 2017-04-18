@@ -1,0 +1,23 @@
+﻿@model SportsOrganizer.Models.Team
+
+@{
+    ViewData["Title"] = "Sports Organizer - Teams Creation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create a new Team</h2>
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Name)
+    @Html.EditorFor(model => model.Name)
+
+    @Html.LabelFor(model => model.Captain)
+    @Html.EditorFor(model => model.Captain)
+
+    @Html.LabelFor(model => model.DivisionId)
+    @Html.DropDownList("DivisionId")
+
+    <input type="submit" value="Create Team" class="btn btn-succes" />
+}
+
+@Html.ActionLink("Back to Teams", "Index")

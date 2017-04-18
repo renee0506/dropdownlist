@@ -14,10 +14,61 @@ namespace SportsOrganizer.Controllers
 {
     public class TeamController : Controller
     {
+        private SportsOrganizerDbContext db = new SportsOrganizerDbContext();
         // GET: /<controller>/
         public IActionResult Index()
         {
+            return View(db.Teams.ToList());
+        }
+
+        public IActionResult Details(int id)
+        {
+            var thisTeam = db.Teams.Include(Teams => Teams.Players).FirstOrDefault(teams => teams.TeamId == id);
+            ViewBag.TeamId = new SelectList(db.Teams, "TeamId", "Name");
+            return View(thisTeam);
+        }
+
+        public IActionResult Create()
+        {
+            ViewBag.DivisionId = new SelectList(db.Divisions, "DivisionId", "Name");
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Team team)
+        {
+            db.Teams.Add(team);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var thisTeam = db.Teams.FirstOrDefault(teams => teams.TeamId == id);
+            return View(thisTeam);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Team team)
+        {
+            db.Teams.Remove(team);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Edit(int id)
+        {
+            var thisTeam = db.Teams.FirstOrDefault(teams => teams.TeamId == id);
+            ViewBag.DivisionId = new SelectList(db.Divisions, "DivisionId", "Name");
+            return View(thisTeam);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Team team)
+        {
+            db.Entry(team).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

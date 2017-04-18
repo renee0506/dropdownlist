@@ -5,15 +5,22 @@
 }
 
 <h1>All of the Divisions</h1>
-@foreach (var division in Model)
+@if (Model.Any())
 {
-    <div>
-        <h4>@Html.DisplayFor(modelDivision => division.Name)</h4>
-        @Html.ActionLink("Details", "Details", new { id = division.DivisionId })
-        @Html.ActionLink("Delete", "Delete", new { id = division.DivisionId })
-        @Html.ActionLink("Edit","Edit", new { id = division.DivisionId })
-    </div>
+    @foreach (var division in Model)
+    {
+        <div>
+            <h4>@Html.DisplayFor(modelDivision => division.Name)</h4>
+            @Html.ActionLink("Details", "Details", new { id = division.DivisionId })
+            @Html.ActionLink("Delete", "Delete", new { id = division.DivisionId })
+            @Html.ActionLink("Edit","Edit", new { id = division.DivisionId })
+        </div>
 
+    }
+}
+else
+{
+    <h4>No Existing Divisions</h4>
 }
 
 @Html.ActionLink("Create New Division", "Create")

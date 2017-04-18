@@ -1,10 +1,26 @@
-﻿@{
+﻿@model IEnumerable<SportsOrganizer.Models.Team>
+@{
     ViewData["Title"] = "Sports Organizer - Teams Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@*<a href="/divisions">Divisions!</a>
-<a href="/teams">Teams!</a>
-<a href="/players">Players!</a>*@
+@if (Model.Any())
+{
+    @foreach(var team in Model)
+    {
+        <div>
+            <h4>@Html.DisplayFor(modelTeam => team.Name)</h4>
+            @Html.ActionLink("Details", "Details", new { id=team.TeamId})
+            @Html.ActionLink("Delete", "Delete", new {  id = team.TeamId})
+            @Html.ActionLink("Edit", "Edit", new { id = team.TeamId })
+        </div>
+    }
 
+}
+else
+{
+   <h4>No Existing Team</h4>
 
+}
+
+@Html.ActionLink("Create New Team", "Create")

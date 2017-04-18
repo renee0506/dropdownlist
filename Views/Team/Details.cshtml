@@ -1,0 +1,12 @@
+﻿@model SportsOrganizer.Models.Team
+
+@{
+    ViewData["Title"] = "Sports Organizer - Teams Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>@Html.DisplayFor(model => model.Name)</h1>
+@foreach (var player in Model.Players)
+{
+    <p>@Html.DisplayFor(modelPlayer => player.Name)</p>
+}
