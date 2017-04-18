@@ -162,7 +162,10 @@
 --resource:"c:\users\epicodus\documents\visual studio 2015\Projects\SportsOrganizer\src\SportsOrganizer\obj\Debug\netcoreapp1.0\SportsOrganizerdotnet-compile.deps.json",SportsOrganizer.deps.json
 c:\users\epicodus\documents\visual studio 2015\Projects\SportsOrganizer\src\SportsOrganizer\Program.cs
 c:\users\epicodus\documents\visual studio 2015\Projects\SportsOrganizer\src\SportsOrganizer\Startup.cs
+c:\users\epicodus\documents\visual studio 2015\Projects\SportsOrganizer\src\SportsOrganizer\Controllers\DivisionController.cs
 c:\users\epicodus\documents\visual studio 2015\Projects\SportsOrganizer\src\SportsOrganizer\Controllers\HomeController.cs
+c:\users\epicodus\documents\visual studio 2015\Projects\SportsOrganizer\src\SportsOrganizer\Controllers\PlayerController.cs
+c:\users\epicodus\documents\visual studio 2015\Projects\SportsOrganizer\src\SportsOrganizer\Controllers\TeamController.cs
 c:\users\epicodus\documents\visual studio 2015\Projects\SportsOrganizer\src\SportsOrganizer\Migrations\20170418162525_Initial.cs
 c:\users\epicodus\documents\visual studio 2015\Projects\SportsOrganizer\src\SportsOrganizer\Migrations\20170418162525_Initial.Designer.cs
 c:\users\epicodus\documents\visual studio 2015\Projects\SportsOrganizer\src\SportsOrganizer\Migrations\SportsOrganizerDbContextModelSnapshot.cs
