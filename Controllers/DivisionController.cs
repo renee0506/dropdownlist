@@ -16,9 +16,29 @@ namespace SportsOrganizer.Controllers
     public class DivisionController : Controller
     {
         // GET: /<controller>/
+        private SportsOrganizerDbContext db = new SportsOrganizerDbContext();
         public IActionResult Index()
         {
+            return View(db.Divisions.ToList());
+        }
+
+        public IActionResult Details(int id)
+        {
+            var thisDivision = db.Divisions.FirstOrDefault(divisions => divisions.DivisionId == id);
+            return View(thisDivision);
+        }
+
+        public IActionResult Create()
+        {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Division division)
+        {
+            db.Divisions.Add(division);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

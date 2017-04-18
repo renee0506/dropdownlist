@@ -1,10 +1,19 @@
-﻿@{
+﻿@model IEnumerable<SportsOrganizer.Models.Division>
+@{
     ViewData["Title"] = "Sports Organizer - Divisions Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@*<a href="/divisions">Divisions!</a>
-<a href="/teams">Teams!</a>
-<a href="/players">Players!</a>*@
+<h1>All of the Divisions</h1>
+@foreach (var division in Model)
+{
+    <div>
+        <h4>@Html.DisplayFor(modelDivision => division.Name)</h4>
+        @Html.ActionLink("Details", "Details", new { id = division.DivisionId })
+    </div>
+
+}
+
+@Html.ActionLink("Create New Division", "Create")
 
 

@@ -1,0 +1,23 @@
+﻿@model SportsOrganizer.Models.Division
+
+@{
+    ViewData["Title"] = "Sports Organizer - Divisions Creation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create a new Division</h2>
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Name)
+    @Html.EditorFor(model => model.Name)
+
+    @Html.LabelFor(model => model.MaxTeams)
+    @Html.EditorFor(model => model.MaxTeams)
+
+    @Html.LabelFor(model => model.Skill)
+    @Html.EditorFor(model => model.Skill)
+
+    <input type="submit" value="Create Division" class="btn btn-succes" />
+}
+
+@Html.ActionLink("Back to Divisions", "Index")
