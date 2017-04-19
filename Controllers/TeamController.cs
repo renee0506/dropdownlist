@@ -14,6 +14,7 @@ namespace SportsOrganizer.Controllers
 {
     public class TeamController : Controller
     {
+
         private SportsOrganizerDbContext db = new SportsOrganizerDbContext();
         // GET: /<controller>/
         public IActionResult Index()
@@ -24,15 +25,13 @@ namespace SportsOrganizer.Controllers
         public IActionResult Details(int id)
         {
             var thisTeam = db.Teams.Include(Teams => Teams.Players).FirstOrDefault(teams => teams.TeamId == id);
-            ViewBag.TeamId = new SelectList(db.Teams, "TeamId", "Name");
+            ViewBag.TeamId = db.Teams;
             return View(thisTeam);
         }
 
         [HttpPost] 
         public IActionResult Details(Player player)
         {
-            var newTeamId = this.Request.Form["TeamId"];
-            player.TeamId = Int32.Parse(newTeamId);
             db.Entry(player).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
